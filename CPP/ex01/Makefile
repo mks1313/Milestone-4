@@ -6,7 +6,7 @@
 #    By: mmarinov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 18:08:37 by mmarinov          #+#    #+#              #
-#    Updated: 2025/10/20 20:51:40 by mmarinov         ###   ########.fr        #
+#    Updated: 2025/10/30 22:12:15 by mmarinov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,33 +35,36 @@ SRCS      := main.cpp \
 OBJS      := $(SRCS:%.cpp=$(OBJ_D)/%.o)
 DEPS      := $(OBJS:.o=.d)
 
+# ==== Colors ====
+COL_RESET := \033[0m
+COL_BLUE  := \033[1;34m
+COL_GREEN := \033[1;32m
+COL_RED   := \033[1;31m
+COL_YELLOW:= \033[1;33m
+
 # ==== Default ====
 all: $(NAME)
 
 # ==== Link ====
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) Makefile
 	@$(CXX) $(CXXFLAGS) $(INC) $(OBJS) -o $(NAME)
-	@printf "Built: %s\n" "$(NAME)"
+	@printf "$(COL_GREEN)Built:$(COL_RESET) %s\n" "$(NAME)"
 
 # ==== Compile ====
 $(OBJ_D)/%.o: $(SRC_D)/%.cpp | $(OBJ_D)
 	@$(CXX) $(CXXFLAGS) $(INC) $(DEPFLAGS) -c $< -o $@
-	@printf "Compiled: %s\n" "$<"
+	@printf "$(COL_BLUE)Compiled:$(COL_RESET) %s\n" "$<"
 
 $(OBJ_D):
 	@mkdir -p $(OBJ_D)
 
-# ==== Convenience ====
-debug: CXXFLAGS += -g3 -fsanitize=address
-debug: fclean $(NAME)
-
 clean:
 	@$(RM) $(OBJ_D)
-	@printf "Cleaned objects\n"
+	@printf "$(COL_RED)Cleaned objects$(COL_RESET)\n"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@printf "Removed binary: %s\n" "$(NAME)"
+	@printf "$(COL_YELLOW)Removed binary:$(COL_RESET) %s\n" "$(NAME)"
 
 re: fclean all
 

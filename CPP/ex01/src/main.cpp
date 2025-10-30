@@ -6,18 +6,36 @@
 /*   By: mmarinov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 20:50:36 by mmarinov          #+#    #+#             */
-/*   Updated: 2025/10/20 23:02:41 by mmarinov         ###   ########.fr       */
+/*   Updated: 2025/10/30 21:26:53 by mmarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "Colors.hpp"
 
-int	main() {
+static void printBanner(void)
+{
+	std::cout << CYAN << "╔══════════════════════════════════════════════════════════╗\n";
+	std::cout << "║" << RESET << BOLD << "               📞  MY AWESOME PHONEBOOK  📖               "  << RESET << CYAN << "║\n";
+	std::cout << "╠══════════════════════════════════════════════════════════╣\n";
+	std::cout << "║" << RESET << "               Commands: " << GREEN << "ADD" << RESET
+	          << ", " << YELLOW << "SEARCH" << RESET
+	          << ", " << RED << "EXIT" << RESET
+	          << "                " << CYAN << "║\n";
+	std::cout << "╚══════════════════════════════════════════════════════════╝"
+	          << RESET << "\n\n";
+}
+
+int main()
+{
+	printBanner();
+
 	PhoneBook pb;
 	std::string command;
 
-	while(42) {
-		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
+	while (true)
+	{
+		std::cout << MAGENTA << "Enter command → " << RESET;
 		if (!std::getline(std::cin, command))
 			break;
 
@@ -28,7 +46,9 @@ int	main() {
 		else if (command == "EXIT")
 			break;
 		else
-			std::cout << "Invalid input, please enter a valid command example: ADD, SEARCH, EXIT" << std::endl;
+			std::cout << RED << "⚠️  Invalid command. Try again."
+			          << RESET << std::endl;
 	}
-	return (0);
+	std::cout << CYAN << "\n👋 Exiting PhoneBook... Goodbye!\n" << RESET;
+	return 0;
 }
