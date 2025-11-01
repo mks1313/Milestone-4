@@ -6,7 +6,7 @@
 /*   By: mmarinov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 20:50:36 by mmarinov          #+#    #+#             */
-/*   Updated: 2025/10/30 21:26:53 by mmarinov         ###   ########.fr       */
+/*   Updated: 2025/11/01 11:41:03 by mmarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void printBanner(void)
 
 int main()
 {
+	std::signal(SIGQUIT, SIG_IGN);
 	printBanner();
 
 	PhoneBook pb;

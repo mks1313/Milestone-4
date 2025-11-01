@@ -6,7 +6,7 @@
 /*   By: mmarinov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 22:06:53 by mmarinov          #+#    #+#             */
-/*   Updated: 2025/10/30 22:06:55 by mmarinov         ###   ########.fr       */
+/*   Updated: 2025/11/01 11:01:15 by mmarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void PhoneBook::printTableHeader_(void) const {
 	          << std::setw(10) << "INDEX" << "|"
 	          << std::setw(10) << "FIRST" << "|"
 	          << std::setw(10) << "LAST"  << "|"
-	          << std::setw(10) << "NICK"  << RESET << "\n";
-	std::cout << CYAN << std::string(43, '-') << RESET << "\n";
+	          << std::setw(10) << "NICK"  << RESET << std::endl;
+	std::cout << CYAN << std::string(43, '-') << RESET << std::endl;
 }
 
 void PhoneBook::printContactRow_(int i) const {
@@ -134,7 +134,7 @@ void PhoneBook::search(void) const {
 	printTableHeader_();
 	for (int i = 0; i < count_; i++)
 		printContactRow_(i);
-	std::cout << "\n";
+	std::cout << std::endl;
 
 	std::string input;
 	int index;
