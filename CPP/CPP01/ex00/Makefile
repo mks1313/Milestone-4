@@ -6,14 +6,14 @@
 #    By: mmarinov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 18:08:37 by mmarinov          #+#    #+#              #
-#    Updated: 2025/11/01 18:33:54 by mmarinov         ###   ########.fr        #
+#    Updated: 2025/11/08 11:50:03 by mmarinov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKEFLAGS += --silent
 
 # ==== Project ====
-NAME      := account
+NAME      := ZombieZZZ
 
 # ==== Compiler & Flags ====
 CXX       := c++
@@ -27,8 +27,8 @@ SRC_D     := src
 OBJ_D     := objs
 
 # ==== Sources  ====
-SRCS      := .cpp \
-             .cpp
+SRCS      := Zombie.cpp  randomChump.cpp \
+             newZombie.cpp main.cpp
 
 # ==== Objects / Deps ====
 OBJS      := $(SRCS:%.cpp=$(OBJ_D)/%.o)
