@@ -6,7 +6,7 @@
 #    By: mmarinov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 18:52:38 by mmarinov          #+#    #+#              #
-#    Updated: 2025/11/30 16:10:11 by mmarinov         ###   ########.fr        #
+#    Updated: 2025/12/06 17:53:17 by mmarinov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_D     := src
 OBJ_D     := objs
 
 # ==== Sources  ====
-SRCS      := main.cpp *.cpp
+SRCS      := main.cpp ClapTrap.cpp
 
 # ==== Objects / Deps ====
 OBJS      := $(SRCS:%.cpp=$(OBJ_D)/%.o)
