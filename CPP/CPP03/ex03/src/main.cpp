@@ -5,97 +5,122 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarinov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/06 13:43:49 by mmarinov          #+#    #+#             */
-/*   Updated: 2025/12/11 22:46:59 by mmarinov         ###   ########.fr       */
+/*   Created: 2025/12/13 14:16:23 by mmarinov          #+#    #+#             */
+/*   Updated: 2025/12/13 14:16:34 by mmarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 #include "Colors.hpp"
 #include <iostream>
 
 int main(void)
 {
-	std::cout << BOLD << BLUE << "\n========== [1] CONSTRUCTORS ==========\n" << RESET;
-	ClapTrap c("Clappy");
-	ScavTrap s("Scavy");
-	FragTrap f("Fraggy");
+	std::cout << BOLD << BLUE
+	          << "\n========== [1] CONSTRUCTION ==========\n"
+	          << RESET;
 
-	std::cout << BOLD << BLUE << "\n========== [2] INITIAL STATUS ==========\n" << RESET;
-	c.print_msg();
-	s.print_msg();
-	f.print_msg();
+	DiamondTrap d1("Ruby");
 
-	// ------------------------------------------------------------
+	std::cout << BOLD << BLUE
+	          << "\n========== [2] WHO AM I ==========\n"
+	          << RESET;
 
-	std::cout << BOLD << MAGENTA << "\n========== [3] BASIC ATTACKS ==========\n" << RESET;
-	c.attack("dummy");
-	s.attack("intruder");
-	f.attack("enemy");
+	d1.whoAmI();
 
-	// ------------------------------------------------------------
+	std::cout << BOLD << BLUE
+	          << "\n========== [3] INITIAL STATUS ==========\n"
+	          << RESET;
 
-	std::cout << BOLD << CYAN << "\n========== [4] DAMAGE RECEIVED ==========\n" << RESET;
-	c.takeDamage(5);
-	s.takeDamage(20);
-	f.takeDamage(40);
+	d1.print_msg();
 
-	std::cout << BOLD << BLUE << "\n--- Status after damage ---\n" << RESET;
-	c.print_msg();
-	s.print_msg();
-	f.print_msg();
+	// ----------------------------------------------------
 
-	// ------------------------------------------------------------
+	std::cout << BOLD << MAGENTA
+	          << "\n========== [4] ATTACK TEST ==========\n"
+	          << RESET;
 
-	std::cout << BOLD << GREEN << "\n========== [5] REPAIRS ==========\n" << RESET;
-	c.beRepaired(3);
-	s.beRepaired(10);
-	f.beRepaired(20);
+	d1.attack("enemy");
+	d1.attack("enemy");
+	d1.attack("enemy");
 
-	std::cout << BOLD << BLUE << "\n--- Status after repairs ---\n" << RESET;
-	c.print_msg();
-	s.print_msg();
-	f.print_msg();
+	std::cout << BOLD << BLUE
+	          << "\n--- Status after attacks ---\n"
+	          << RESET;
 
-	// ------------------------------------------------------------
+	d1.print_msg();
 
-	std::cout << BOLD << YELLOW << "\n========== [6] SPECIAL METHODS ==========\n" << RESET;
-	s.guardGate();
-	f.highFivesGuys();
+	// ----------------------------------------------------
 
-	// ------------------------------------------------------------
+	std::cout << BOLD << CYAN
+	          << "\n========== [5] DAMAGE & REPAIR ==========\n"
+	          << RESET;
 
-	std::cout << BOLD << MAGENTA << "\n========== [7] COPY CONSTRUCTION ==========\n" << RESET;
-	FragTrap copyFrag(f);
-	copyFrag.print_msg();
+	d1.takeDamage(30);
+	d1.takeDamage(50);
+	d1.beRepaired(20);
 
-	// ------------------------------------------------------------
+	std::cout << BOLD << BLUE
+	          << "\n--- Status after damage & repair ---\n"
+	          << RESET;
 
-	std::cout << BOLD << YELLOW << "\n========== [8] COPY ASSIGNMENT ==========\n" << RESET;
-	FragTrap assignFrag("Temp");
-	assignFrag = f;
-	assignFrag.print_msg();
+	d1.print_msg();
 
-	// ------------------------------------------------------------
+	// ----------------------------------------------------
 
-	std::cout << BOLD << RED << "\n========== [9] ENERGY DRAIN TEST ==========\n" << RESET;
-	for (int i = 0; i < 105; i++)  // hasta drenar
-		f.attack("Energy Dummy");
+	std::cout << BOLD << YELLOW
+	          << "\n========== [6] ENERGY DRAIN ==========\n"
+	          << RESET;
 
-	std::cout << BOLD << BLUE << "\n--- Fraggy after draining energy ---\n" << RESET;
-	f.print_msg();
+	for (int i = 0; i < 60; ++i)
+		d1.attack("dummy");
 
-	// ------------------------------------------------------------
+	std::cout << BOLD << BLUE
+	          << "\n--- Status after energy drain ---\n"
+	          << RESET;
 
-	std::cout << BOLD << GREEN << "\n========== [10] ACTIONS WITH 0 ENERGY ==========\n" << RESET;
-	f.attack("NoEnergyTarget");
-	f.beRepaired(5);
+	d1.print_msg();
 
-	// ------------------------------------------------------------
+	std::cout << BOLD << RED
+	          << "\n========== [7] ACTIONS WITH 0 ENERGY ==========\n"
+	          << RESET;
 
-	std::cout << BOLD << WHITE << "\n========== END OF TEST ==========\n" << RESET;
+	d1.attack("ghost");
+	d1.beRepaired(10);
+
+	// ----------------------------------------------------
+
+	std::cout << BOLD << MAGENTA
+	          << "\n========== [8] COPY CONSTRUCTOR ==========\n"
+	          << RESET;
+
+	DiamondTrap d2(d1);
+	d2.whoAmI();
+	d2.print_msg();
+
+	// ----------------------------------------------------
+
+	std::cout << BOLD << MAGENTA
+	          << "\n========== [9] COPY ASSIGNMENT ==========\n"
+	          << RESET;
+
+	DiamondTrap d3("Temp");
+	d3 = d1;
+	d3.whoAmI();
+	d3.print_msg();
+
+	// ----------------------------------------------------
+
+	std::cout << BOLD << BLUE
+	          << "\n========== [10] DESTRUCTION ORDER ==========\n"
+	          << RESET;
+
+	std::cout << DIM
+	          << "End of main, destructors will now be called\n"
+	          << RESET;
 
 	return 0;
 }

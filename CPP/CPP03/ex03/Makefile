@@ -6,7 +6,7 @@
 #    By: mmarinov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 18:52:38 by mmarinov          #+#    #+#              #
-#    Updated: 2025/12/11 22:49:42 by mmarinov         ###   ########.fr        #
+#    Updated: 2025/12/13 11:22:54 by mmarinov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME      := DiamondTrap
 
 # ==== Compiler & Flags ====
 CXX       := c++
-CXXFLAGS  := -Wall -Wextra -Werror -std=c++98 -pedantic-errors
+CXXFLAGS  := -Wall -Wextra -Werror -Wshadow -std=c++98 -pedantic-errors
 INC       := -Iinc
 DEPFLAGS  := -MMD -MP
 RM        := rm -rf
