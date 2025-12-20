@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarinov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/13 19:23:29 by mmarinov          #+#    #+#             */
-/*   Updated: 2025/12/20 11:42:32 by mmarinov         ###   ########.fr       */
+/*   Created: 2025/12/20 12:02:45 by mmarinov          #+#    #+#             */
+/*   Updated: 2025/12/20 12:18:54 by mmarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-# include <string>
+# include "WrongAnimal.hpp"
 
-class Animal
+class WrongCat : public WrongAnimal
 {
-	protected:
-		std::string type;
-
 	public:
-		Animal(void);
-		Animal(const std::string& type);
-		virtual ~Animal(void);
-		Animal(Animal const &copy);
-		Animal &operator=(Animal const &copy);
+		WrongCat(void);
+		WrongCat(const std::string& type);
+		~WrongCat(void);
+		WrongCat(WrongCat const &copy);
+		WrongCat &operator=(WrongCat const &copy);
 
-		void setType(const std::string& type);
-		std::string getType(void) const;
-
-		virtual void makeSound(void) const;
+		void makeSound(void) const;
 };
 
 #endif

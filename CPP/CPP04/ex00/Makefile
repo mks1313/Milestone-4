@@ -6,7 +6,7 @@
 #    By: mmarinov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 18:52:38 by mmarinov          #+#    #+#              #
-#    Updated: 2025/12/13 19:33:32 by mmarinov         ###   ########.fr        #
+#    Updated: 2025/12/20 12:22:56 by mmarinov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_D     := src
 OBJ_D     := objs
 
 # ==== Sources  ====
-SRCS      := main.cpp Cat.cpp Dog.cpp
+SRCS      := main.cpp Cat.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp
 
 # ==== Objects / Deps ====
 OBJS      := $(SRCS:%.cpp=$(OBJ_D)/%.o)
